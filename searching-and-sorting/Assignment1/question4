@@ -1,0 +1,16 @@
+int maximumGap(vector<int>& nums) {
+        if(nums.size() <2 )
+            return 0;
+        priority_queue<int> pq;
+        for(int x : nums)
+            pq.push({x});
+        int d=pq.top(),currDiff=0,ans = INT_MIN;
+        pq.pop();
+        while(!pq.empty()){
+            currDiff = d-pq.top();
+            ans = max(ans,currDiff);
+            d = pq.top();
+            pq.pop();
+        }
+        return ans;
+    }

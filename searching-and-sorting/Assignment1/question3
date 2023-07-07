@@ -1,0 +1,18 @@
+int firstBadVersion(int n) {
+        int s=0;
+        int end=n;
+        int mid=s+(end-s)/2;
+        int ans=0;
+        while(s<=end){
+            
+            if(isBadVersion(mid)){
+                ans=mid;
+                end=mid-1;
+            }else{
+                 s=mid+1;
+            }
+            mid=s+(end-s)/2;
+           
+        }return ans;
+        
+    }
