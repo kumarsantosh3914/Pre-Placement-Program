@@ -1,0 +1,15 @@
+#include <algorithm>
+#include <deque>
+#include <vector>
+
+vector<int> deckRevealedIncreasing(vector<int>& deck) {
+  sort(deck.rbegin(), deck.rend());
+  deque<int> queue;
+  queue.push_front(deck[0]);
+  for (int i = 1; i < deck.size(); i++) {
+    queue.push_front(queue.back());
+    queue.pop_back();
+    queue.push_front(deck[i]);
+  }
+  return vector<int>(queue.begin(), queue.end());
+}

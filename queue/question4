@@ -1,0 +1,8 @@
+ int ping(int t) {
+    queue<int> q;
+    while (!q.empty() && q.front() < t - 3000) {
+        q.pop();
+    }    
+    q.push(t);
+    return q.size();
+}

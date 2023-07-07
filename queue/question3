@@ -1,0 +1,17 @@
+int countStudents(vector<int>& students, vector<int>& sandwiches) {
+  int n = students.size();
+  vector<int> queue = students; 
+  int count = 0;
+  while (count < n && !queue.empty()) {
+    if (queue[0] == sandwiches[0]) {
+      queue.erase(queue.begin());
+      sandwiches.erase(sandwiches.begin());
+      count = 0; 
+    } else {
+      queue.push_back(queue[0]);
+      queue.erase(queue.begin());
+      count++;
+    }
+  }
+  return queue.size();
+}

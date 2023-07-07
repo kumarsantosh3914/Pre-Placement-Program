@@ -1,0 +1,17 @@
+int firstUniqueChar(const std::string& s) {
+    unordered_map<char, int> frequencyMap;
+
+    for(int i = 0; i < s.length(); i++) {
+        char ch = s[i];
+        frequencyMap[ch]++;
+    }
+
+    for(int i = 0; i < s.length(); i++) {
+        char ch = s[i];
+        if (frequencyMap[ch] == 1) {
+            return i;
+        }
+    }
+    return -1;
+}
+

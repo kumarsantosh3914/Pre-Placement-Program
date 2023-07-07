@@ -1,0 +1,17 @@
+int findTheWinner(int n, int k) {
+  queue<int> queue;
+  for(int i = 1; i <= n; i++) {
+    queue.push(i);
+  }
+
+  while (queue.size() > 1) {
+    int deleteCount = k - 1;
+    while (deleteCount > 0) {
+      queue.push(queue.front());
+      queue.pop();
+      deleteCount--;
+    }
+    queue.pop();
+  }
+  return queue.front();
+}
