@@ -1,0 +1,33 @@
+vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
+    vector<int> ret;
+    if(nums1.empty() || nums2.empty()) return ret;
+    sort(nums1.begin(), nums1.end());
+    sort(nums2.begin(), nums2.end());
+    int j=0;
+    for(int i=0; i<nums1.size(); ) {
+        int index = lower_bound(nums2, nums1[i]);
+        int count2 = 0;
+        while(index<nums2.size() && nums2[index]==nums1[i]) {
+            count2++; 
+            index++;
+        }
+        int count1 = 0;
+        while(nums1[j]==nums1[i]) {
+            count1++;
+            j++;
+        }
+        ret.insert(ret.end(),min(count1,count2),nums1[i]);
+        i=j;
+    } 
+    return ret;
+}
+
+int lower_bound(const vector<int>& nums, int target) {
+    int l=0, r=nums.size()-1;
+    while(l<r) {
+        int m=l+(r-l)/2;
+        if(nums[m]<target) {l=m+1;}
+        else {r=m;}
+    }
+    return r;
+}
