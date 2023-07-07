@@ -1,0 +1,27 @@
+bool checkOrder(queue<int> q) {
+    stack<int> s;
+    queue<int> sortedQ;
+    int expected = 1;
+    while (!q.empty()) {
+        int current = q.front();
+        q.pop();
+        if (current == expected) {
+            sortedQ.push(current);
+            expected++;
+            while (!s.empty() && s.top() == expected) {
+                sortedQ.push(s.top());
+                s.pop();
+                expected++;
+            }
+        }
+        else {
+            s.push(current);
+        }
+    }
+    while (!s.empty() && s.top() == expected) {
+        sortedQ.push(s.top());
+        s.pop();
+        expected++;
+    }
+    return sortedQ.size() == sortedQ.back() && s.empty();
+}

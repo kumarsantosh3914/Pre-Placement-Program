@@ -1,0 +1,21 @@
+vector<int> findNearestGreaterFrequency(const vector<int>& arr) {
+    unordered_map<int, int> ump;
+    vector<int> result(arr.size(), -1);
+    stack<int> stack;
+
+    for (auto &num : arr) {
+        ump[num]++;
+    }
+
+    for (int i = arr.size() - 1; i >= 0; i--) {
+        int current = arr[i];
+        while (!stack.empty() && ump[current] >= ump[stack.top()]) {
+            stack.pop();
+        }
+        if (!stack.empty()) {
+            result[i] = stack.top();
+        }
+        stack.push(current);
+    }
+    return result;
+}

@@ -1,0 +1,15 @@
+int reverseNumber(int num) {
+    stack<int> stack;
+    while (num > 0) {
+        int digit = num % 10;
+        stack.push(digit);
+        num /= 10;
+    }
+    int reversedNum = 0, placeValue = 1;
+    while (!stack.empty()) {
+        int digit = stack.top(), stack.pop();
+        reversedNum += digit * placeValue;
+        placeValue *= 10;
+    }
+    return reversedNum;
+}

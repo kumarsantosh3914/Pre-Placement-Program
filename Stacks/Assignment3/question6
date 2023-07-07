@@ -1,0 +1,16 @@
+void reverseKElements(std::queue<int>& q, int k) {
+    stack<int> stack;
+    for (int i = 0; i < k; i++) {
+        stack.push(q.front());
+        q.pop();
+    }
+    while (!stack.empty()) {
+        q.push(stack.top());
+        stack.pop();
+    }
+    for (int i = 0; i < q.size() - k; i++) {
+        q.push(q.front());
+        q.pop();
+    }
+}
+

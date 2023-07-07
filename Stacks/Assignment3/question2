@@ -1,0 +1,16 @@
+void sorted(stack<int> &s, int n) {
+    if(n<=1) return;
+    int topElement=s.top();
+    s.pop();
+    sorted(s,n-1);
+    stack<int> temp;
+    while(!s.empty() && s.top()>topElement) 
+          temp.push(s.top()), s.pop();
+          s.push(topElement);
+    while(temp.size()) 
+        s.push(temp.top()),temp.pop();
+    return ;
+}
+void SortedStack :: sort() {
+   sorted(s, s.size());
+}

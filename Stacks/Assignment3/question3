@@ -1,0 +1,9 @@
+vector<int> deleteMiddle(vector<int>& stack) {
+    int size = stack.size();
+    int middleIndex = size / 2;
+    for (int i = middleIndex; i < size - 1; i++) {
+        stack[i] = stack[i + 1];
+    }
+    stack.pop_back();
+    return stack;
+}

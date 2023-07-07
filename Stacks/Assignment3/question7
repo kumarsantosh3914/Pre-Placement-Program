@@ -1,0 +1,11 @@
+int remainingWords(std::vector<std::string>& words) {
+    stack<string> st;
+    for (const string &word: words) {
+        if (!st.empty() && st.top() == word) {
+            st.pop(); 
+        } else {
+            st.push(word); 
+        }
+    }
+    return st.size();
+}
